@@ -14,14 +14,22 @@ import java.sql.SQLException;
  */
 public class Conexion {
     
-    public Connection get_Connection(){
-        Connection conection = null;
-        try{
-            conection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensajes_app","root","");         
-        } catch(SQLException e) {
-            System.out.println(e);
+    private static Connection myConnection = null;
+    
+    public static Connection get_Connection(){
+        if(myConnection == null){
+            try{
+                myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensajes_app","root","");         
+                System.out.println("Conexión exitosa...");
+            } catch(SQLException e) {
+                System.out.println(e.getMessage());
+            }
         }
-        return conection;
+        return myConnection;
+    }
+
+    public static Connection getMyConnection() {
+        return myConnection;
     }
     
 }

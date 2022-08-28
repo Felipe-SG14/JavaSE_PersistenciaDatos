@@ -4,6 +4,9 @@
  */
 package com.mycompany.mensajes_app;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 /**
  *
  * @author felip
@@ -12,6 +15,19 @@ public class MensajesDAO {
     
     // Métodos estáticos
     public static void CrearMensajeDB(Mensaje mensaje){
+        Connection conexion = Conexion.getMyConnection();
+        
+        // Insercion de los datos
+        try{
+            PreparedStatement ps = null;
+            try{
+                String query = "";
+            } catch {
+                
+            }
+        }catch{
+            
+        }
         
     }
     

@@ -6,7 +6,10 @@
 package com.mycompany.mensajes_app;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,8 +23,16 @@ public class Inicio {
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         
+        System.out.println("Iniciando aplicación...");
+        
         do{
-            System.out.println("-------------");
+            //Connecting to database
+            if( Conexion.getMyConnection() == null ){
+                System.out.println("Conectando a la base de datos...");
+                Conexion.get_Connection();
+            }
+          
+            System.out.println("--------------------------");
             System.out.println("Aplicación de mensajes...");
             System.out.println("1. Crear mensaje");
             System.out.println("2. Listar mensajes");
@@ -34,35 +45,24 @@ public class Inicio {
             
             // Switch
             switch(opcion){
-                case 1:
-                    mensajesService.crearMensaje();
-                    break;
-                case 2:
-                    mensajesService.listarMensajes();
-                    break;
-                case 3:
-                    mensajesService.editarMensaje();
-                    break;
-                case 4:
-                    mensajesService.borrarMensaje();
-                    break;
-                case 5:
-                    System.out.println("Saliendo...");
-                    break;
-                default:
-                    System.out.println("Ingresa una opción adecuada...\n");
-                    break;
-            }
-            
-            
+                case 1 -> mensajesService.crearMensaje();
+                case 2 -> mensajesService.listarMensajes();
+                case 3 -> mensajesService.editarMensaje();
+                case 4 -> mensajesService.borrarMensaje();
+                case 5 -> System.out.println("Saliendo...");
+                default -> System.out.println("Ingresa una opción adecuada...\n");
+            }  
         }while(opcion != 5);
         
+        // Close connection
         
-//        Conexion conexion = new Conexion();
-//        try{
-//            Connection cnx = conexion.get_Connection();
-//        } catch(Exception e) {
-//            System.out.println(e);
-//        }
+        Connection conexion = Conexion.getMyConnection();
+        try {
+            conexion.close();
+            System.out.println("Conexión cerrada...");
+        } catch (SQLException ex) {
+            System.out.println("Error al cerrar conexión...");
+        }
+        
     }
 }

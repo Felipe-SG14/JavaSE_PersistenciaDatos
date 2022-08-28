@@ -5,6 +5,8 @@
 
 package com.mycompany.mensajes_app;
 
+import java.sql.Connection;
+
 /**
  *
  * @author felip
@@ -13,5 +15,12 @@ public class Mensajes_app {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        
+        Conexion conexion = new Conexion();
+        try{
+            Connection cnx = conexion.get_Connection();
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 }

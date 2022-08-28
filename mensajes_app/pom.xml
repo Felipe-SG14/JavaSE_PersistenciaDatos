@@ -16,6 +16,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <exec.mainClass>com.mycompany.mensajes_app.Mensajes_app</exec.mainClass>
+        <exec.mainClass>com.mycompany.mensajes_app.Inicio</exec.mainClass>
     </properties>
 </project>

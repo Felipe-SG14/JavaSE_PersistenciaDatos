@@ -4,14 +4,29 @@
  */
 package com.mycompany.mensajes_app;
 
+import java.util.Scanner;
+
 /**
  *
  * @author felip
  */
-public class mensajesService {
+public class MensajesService {
     
     
     public static void crearMensaje(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nCreación del mensaje...");
+        System.out.print("Ingresa tu mensaje: ");
+        String mensaje = sc.nextLine();
+        System.out.print("Ingresa tu nombre: ");
+        String nombre = sc.nextLine();
+        
+        // Creación del mensaje y set de valores
+        Mensaje registro = new Mensaje();
+        registro.setMensaje(mensaje);
+        registro.setAutor_mensaje(nombre);
+        MensajesDAO.crearMensajeDB(registro);
+        
         
     }
     

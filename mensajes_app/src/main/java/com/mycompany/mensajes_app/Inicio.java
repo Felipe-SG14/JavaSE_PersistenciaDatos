@@ -45,10 +45,10 @@ public class Inicio {
             
             // Switch
             switch(opcion){
-                case 1 -> mensajesService.crearMensaje();
-                case 2 -> mensajesService.listarMensajes();
-                case 3 -> mensajesService.editarMensaje();
-                case 4 -> mensajesService.borrarMensaje();
+                case 1 -> MensajesService.crearMensaje();
+                case 2 -> MensajesService.listarMensajes();
+                case 3 -> MensajesService.editarMensaje();
+                case 4 -> MensajesService.borrarMensaje();
                 case 5 -> System.out.println("Saliendo...");
                 default -> System.out.println("Ingresa una opción adecuada...\n");
             }  
